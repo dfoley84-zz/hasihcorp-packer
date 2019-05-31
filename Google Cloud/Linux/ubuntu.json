@@ -1,0 +1,27 @@
+{
+    "provisioners": [
+      {
+          "type": "shell",
+          "inline": [
+              "sleep 30",
+              "apt-add-repository ppa:ansible/ansible -y",
+              "/usr/bin/apt-get update",
+              "/usr/bin/apt-get -y install ansible"
+          ]
+      }
+],
+"builders": [
+    {
+        "type": "googlecompute",
+        "account_file": ".json",
+        "project_id": "MY_PROJECT_ID",
+        "region":"europe-west2",
+        "zone": "europe-west2-c",
+        "machine_type": "n1-standard-2",
+        "disk_size": 60,
+        "disk_type": "pd-ssd",
+        "image_description": "Ubuntu baked Image",
+        "source_image_family": "Ubuntu-19.04"
+    }
+        ]
+}
