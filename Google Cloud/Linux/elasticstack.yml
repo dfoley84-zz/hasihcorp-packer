@@ -4,11 +4,6 @@
 
   tasks:
 
-    - name: Update all packages to the latest version
-      apt:
-        name: aptitude 
-        upgrade: yes
-
     - name: Download Filebeat
       get_url:
         url: https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.1.1-amd64.deb
@@ -31,3 +26,24 @@
     - name: Install Metricbeat
       apt:
         deb: /home/ubuntu/metricbeat-7.1.1-amd64.deb
+
+    - name: Download Auditbeat
+      get_url:
+        url: https://artifacts.elastic.co/downloads/beats/auditbeat/auditbeat-7.1.1-amd64.deb
+        dest: /home/ubuntu/auditbeat-7.1.1-amd64.deb
+        mode: 0440
+
+    - name: Install Auditbeat
+      apt:
+        deb: /home/ubuntu/auditbeat-7.1.1-amd64.deb
+    
+    - name: Download Packetbeat
+      get_url:
+        url: https://artifacts.elastic.co/downloads/beats/packetbeat/packetbeat-7.1.1-amd64.deb
+        dest: /home/ubuntu/packetbeat-7.1.1-amd64.deb
+        mode: 0440
+    
+    - name: Install Packetbeat
+      apt:
+        deb: /home/ubuntu/packetbeat-7.1.1-amd64.deb
+
