@@ -1,0 +1,23 @@
+- hosts: localhost
+  become: true
+  tasks:
+    - name: Install required packages
+      apt:
+        name: '{{ item }}'
+        state: latest
+        with_items:
+          - realmd
+          - sssd
+          - sssd-tools
+          - libnss-sss
+          - libpam-sss
+          - adcli
+          - oddjob
+          - oddjob-mkhomedir
+          - samba-common
+          - packagekit
+          - python-pip
+
+    - name: Install pexpect
+      pip:
+        name: pexpect
