@@ -19,6 +19,7 @@
         "zone": "europe-west2-c",
         "machine_type": "n1-standard-2",
         "disk_size": 60,
+        "ssh_username" : "root",
         "disk_type": "pd-ssd",
         "image_description": "Ubuntu baked Image",
         "source_image_family": "Ubuntu-19.04"
