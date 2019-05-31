@@ -1,5 +1,13 @@
 {
-    "provisioners": [
+    "provisioners": [    
+    {
+        "type": "shell",
+        "inline": [
+            "sleep 30",
+            "apt update -y",
+            "apt upgrade -y"
+        ]
+    },
       {
           "type": "shell",
           "inline": [
@@ -8,6 +16,10 @@
               "/usr/bin/apt-get update",
               "/usr/bin/apt-get -y install ansible"
           ]
+      },
+      {
+        "type": "ansible",
+        "playbook_file": "domain.yml"
       }
 ],
 "builders": [
@@ -19,10 +31,10 @@
         "zone": "europe-west2-c",
         "machine_type": "n1-standard-2",
         "disk_size": 60,
-        "ssh_username" : "root",
         "disk_type": "pd-ssd",
+        "ssh_username" : "root",
         "image_description": "Ubuntu baked Image",
-        "source_image_family": "Ubuntu-19.04",
+        "source_image_family": "ubuntu-1804-lts",
         "network_project_id": "development",
         "subnetwork": "dev"
     }
