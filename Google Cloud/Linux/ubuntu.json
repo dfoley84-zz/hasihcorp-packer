@@ -22,7 +22,7 @@
         "ssh_username" : "root",
         "disk_type": "pd-ssd",
         "image_description": "Ubuntu baked Image",
-        "source_image_family": "Ubuntu-19.04"
+        "source_image_family": "Ubuntu-19.04",
         "network_project_id": "development",
         "subnetwork": "dev"
     }
