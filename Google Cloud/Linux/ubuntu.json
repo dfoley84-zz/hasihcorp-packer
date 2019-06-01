@@ -1,4 +1,10 @@
 {
+    "variables": 
+    {
+        "Google_account_file": " ",
+        "Google_project_id": " "
+    },
+
     "provisioners": [    
     {
         "type": "shell",
@@ -26,7 +32,7 @@
       },
       {
         "type": "ansible-local",
-        "playbook_file": "./playbook.yml"
+        "playbook_file": "./domain.yml"
       },
       {
         "type": "ansible-local",
@@ -36,8 +42,8 @@
 "builders": [
     {
         "type": "googlecompute",
-        "account_file": ".json",
-        "project_id": "MY_PRO_ID",
+        "account_file": "{{ user `Google_account_file` }}",
+        "project_id": "{{ user `Google_project_id` }}",
         "region":"europe-west2",
         "zone": "europe-west2-c",
         "machine_type": "n1-standard-2",
