@@ -1,7 +1,7 @@
 {
     "variables": 
     {
-        "Google_account_file": " ",
+        "account_file": " ",
         "Google_project_id": " "
     },
 
@@ -32,17 +32,21 @@
       },
       {
         "type": "ansible-local",
-        "playbook_file": "./domain.yml"
+        "playbook_file": "/Ansible/playbook.yml"
       },
       {
         "type": "ansible-local",
-        "playbook_file": "./elasticstack.yml"
+        "playbook_file": "/Ansible/java.yml"
+      }
+      {
+        "type": "ansible-local",
+        "playbook_file": "/Ansible/elasticstack.yml"
       }
 ],
 "builders": [
     {
         "type": "googlecompute",
-        "account_file": "{{ user `Google_account_file` }}",
+        "account_file": "{{ user `account_file` }}",
         "project_id": "{{ user `Google_project_id` }}",
         "region":"europe-west2",
         "zone": "europe-west2-c",
