@@ -1,10 +1,10 @@
-
 {
     "variables": 
     {
         "account_file": ".json",
         "Google_project_id": " ",
-        "startup_script": "winrm quickconfig -quiet & net user /add packer & net localgroup administrators packer /add & netsh advfirewall firewall set rule name=\"Windows Remote Management (HTTP-In)\" profile=public new remoteip=any & winrm set winrm/config/service @{AllowUnencrypted=\"true\"} & winrm set winrm/config/service/auth @{Basic=\"true\"} & powershell.exe -NoProfile -ExecutionPolicy Bypass -Command \"Set-ExecutionPolicy -ExecutionPolicy bypass -Force\""
+        "startup_script": "winrm quickconfig -quiet & net user /add packer ChangeMeN0w! & net localgroup administrators packer /add & netsh advfirewall firewall set rule name=\"Windows Remote Management (HTTP-In)\" profile=public new remoteip=any & winrm set winrm/config/service @{AllowUnencrypted=\"true\"} & winrm set winrm/config/service/auth @{Basic=\"true\"} & powershell.exe -NoProfile -ExecutionPolicy Bypass -Command \"Set-ExecutionPolicy -ExecutionPolicy bypass -Force\"",
+        "shutdown_script": "Stop-Service winrm & Set-Service -Name winrm -StartupType Disabled"
     },
 
     "provisioners": [    
@@ -14,6 +14,16 @@
             "inline": [
               "Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))"
               ]
+        },
+
+        {
+            "type": "powershell",
+            "script": "./filebeat.ps1"
+        },
+
+        {
+            "type": "powershell",
+            "script": "./metricbeat.ps1"
         },
         
         {
@@ -46,8 +56,7 @@
                  "choco install -y winscp",
                  "choco install -y irfanview",
                  "choco install -y notepadplusplus.install",
-                 "choco install -y jre8",
-                 "choco install -y visionapp --version 9.0.5222"
+                 "choco install -y jre8"
        
             ]
           }
@@ -68,8 +77,9 @@
             "image_description": "Windows baked Image",
             "source_image": "windows-server-2016-dc-v20170227",
             "subnetwork": "dev",
-            "metadata": { 
-                "windows-startup-script-cmd": "{{user `startup_script`}}" 
+            "metadata":
+             { 
+                "windows-startup-script-cmd": "{{user `startup_script`}}"
             }
         
                     
