@@ -55,7 +55,7 @@
      "inline": [
           "choco install -y git.install",
           "choco install -y saltminion"
-          "choco install -y install firefox",
+          "choco install -y firefox",
           "choco install -y googlechrome",
           "choco install -y pgadmin3",
           "choco install -y winscp",
