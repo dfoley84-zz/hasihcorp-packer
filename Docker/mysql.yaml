@@ -22,7 +22,6 @@
         apt:
           name: "{{ item }}"
           state: present
-          update_cache: yes
         with_items:
           - msodbcsql17
           - mssql-tools
