@@ -5,7 +5,8 @@ source "docker" "example" {
     changes = [
       "WORKDIR /app",
       "EXPOSE 5000",
-      "CMD [\"sh\", \"entryppint.sh\"]"
+      "ENTRYPOINT [\"sh\", \"entrypoint.sh\"]"
+
     ]
     
 }
